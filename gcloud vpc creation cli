@@ -1,0 +1,28 @@
+gcloud compute networks create firstnetwork \
+    --subnet-mode=auto
+
+Create subnet
+gcloud compute networks subnets list --network=firstnetwork \
+    --regions=us-central1,europe-west1 \
+    --format="table(region, name, ipCidrRange)"
+
+# Allow ICMP
+gcloud compute firewall-rules create firstnetwork-allow-icmp \
+    --network=firstnetwork \
+    --allow=icmp
+
+# Allow internal communication within the network
+gcloud compute firewall-rules create firstnetwork-allow-internal \
+    --network=firstnetwork \
+    --allow=tcp:0-65535,udp:0-65535,icmp \
+    --source-ranges=10.128.0.0/9
+
+# Allow RDP
+gcloud compute firewall-rules create firstnetwork-allow-rdp \
+    --network=firstnetwork \
+    --allow=tcp:3389
+
+# Allow SSH
+gcloud compute firewall-rules create firstnetwork-allow-ssh \
+    --network=firstnetwork \
+    --allow=tcp:22
