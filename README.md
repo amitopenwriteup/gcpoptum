@@ -65,6 +65,3 @@ Some of the included labs & guides:
 For queries, reach out at **[amit@openwriteup.com](mailto:amit@openwriteup.com)**
 
 ```
-
-👉 Do you want me to also create a **separate README just for the GCP labs repo** (structured as a lab manual with index + links to each file), or keep it **general-purpose** for the whole repo?
-```
